@@ -25,42 +25,15 @@ class GFG
 // } Driver Code Ends
 
 
-// //User function Template for Java
-
-// class Solution{
-//     int replaceBit(int N, int K){
-//         int mask = 1 << (K - 1); // Create a mask with '1' at the Kth position
-//         if ((N & mask) != 0) {   // Check if the Kth bit is '1'
-//             N = N & ~mask;      // Use bitwise AND to make the Kth bit '0'
-//         }
-//         return N;
-//     }
-// }
-
-// class Solution {
-//     int replaceBit(int N, int K) {
-//         int mask = 1 << (K - 1); // Create a mask with '1' at the Kth position
-//         if ((N & mask) != 0) {   // Check if the Kth bit is '1'
-//             N = N ^ mask;        // Use bitwise XOR to make the Kth bit '0'
-//         }
-//         return N;
-//     }
-// }
-
 class Solution {
     int replaceBit(int N, int K) {
-        int p = N;
-        int c=0;
+        int p = N,c=0;
         while(p!=0){
             p=p>>1;
             c++;
         }
-        int m= 1 << c;
-        m= m  >> K;
-        m = ~m;
-         // Create a mask with '0' at the Kth position
-        N = N & m;              // Use bitwise AND to make the Kth bit '0'
-        return N;
+        return (N & ~(( 1 << c) >> K));              // Use bitwise AND to make the Kth bit '0'
+
     }
 }
 
