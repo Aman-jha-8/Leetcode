@@ -43,37 +43,25 @@ class GFG
 
 //User function Template for Java
 
-// import java.util.Stack;
-
 class Solution
 { 
     static void reverse(Stack<Integer> s)
     {
-        if (s.isEmpty()) 
+        // add your code here
+        if(s.isEmpty()){
             return;
-        
-        // Step 2: remove the top element from stack
-        int top = s.pop();
-        
-        // Step 3: recursively reverse the remaining stack
-        reverse(s);
-        
-        // Step 4: insert the element removed in step 2 at the bottom of the stack
-        insertAtBottom(s, top);
-    }
-
-    private static void insertAtBottom(Stack<Integer> s, int item)
-    {
-        if (s.isEmpty())
-            s.push(item);
-        else
-        {
-            // remove the top item and recursively insert the item
-            int temp = s.pop();
-            insertAtBottom(s, item);
-            
-            // push the top item back into the stack
-            s.push(temp);
         }
+        int a = s.pop();
+        reverse(s);
+        addStk(a,s);
+    }
+    private static void addStk(int a,Stack<Integer> s){
+        if(s.isEmpty()){
+            s.push(a);
+            return;
+        }
+        int temp = s.pop();
+        addStk(a,s);
+        s.push(temp);
     }
 }
