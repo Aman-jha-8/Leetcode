@@ -49,16 +49,14 @@ class Solution
     // Function to generate permutations recursively
     static void permute(char[] ch, int currentIndex, ArrayList<String> res)
     {
-        if (currentIndex == ch.length - 1) 
-        {
+        if(currentIndex == ch.length){
             res.add(String.valueOf(ch));
+            return;
         }
- 
-        for (int i = currentIndex; i < ch.length; i++)
-        {
-            swap(ch, currentIndex, i);
-            permute(ch, currentIndex + 1, res);
-            swap(ch, currentIndex, i); // backtrack step (restore the string to its original form)
+        for(int i=currentIndex;i<ch.length;i++){
+            swap(ch,currentIndex,i);
+            permute(ch,currentIndex+1,res);
+            swap(ch,currentIndex,i);
         }
     }
 
