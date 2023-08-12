@@ -42,13 +42,14 @@ class Solution
     // Function to do a binary search in tails[] to find the index where a[i] should be placed.
     static int ceilIndex(int tails[], int l, int r, int key) 
     {
-        while (r - l > 1) 
-        {
-            int m = l + (r - l) / 2;
-            if (tails[m] >= key)
+        while(r-l>1){
+            int m = l + (r - l)/2;
+            if(tails[m] >= key){
                 r = m;
-            else
+            }
+            else{
                 l = m;
+            }
         }
         return r;
     }
@@ -56,23 +57,23 @@ class Solution
     // Function to find the length of the longest increasing subsequence.
     static int longestSubsequence(int size, int a[]) 
     {
-        if (size == 0)
+        if(size == 0){
             return 0;
-
-        int tails[] = new int[size];
-        int length = 1; // Always points to empty slot in tails.
-
+        }
+        int[] tails = new int[size];
         tails[0] = a[0];
-        
-        for (int i = 1; i < size; i++) 
-        {
-            if (a[i] < tails[0])
-                tails[0] = a[i];  // New smallest value.
-            else if (a[i] > tails[length - 1])
-                tails[length++] = a[i];  // A[i] extends largest subsequence.
-            else
-                tails[ceilIndex(tails, -1, length - 1, a[i])] = a[i];  // A[i] wants to be current end candidate of an existing subsequence.
+        int length=1;
+        for(int i=1;i<size;i++){
+            if(a[i]< tails[0]){
+                tails[0] = a[i];
+            }
+            else if(a[i] > tails[length - 1]){
+                tails[length++] = a[i];
+            }
+            else{
+                tails[ceilIndex(tails,-1,length,a[i])] = a[i];
+            }
         }
         return length;
     }
-}
+}//🫡
