@@ -45,31 +45,22 @@ class Array {
 // } Driver Code Ends
 
 
-// import java.util.ArrayList;
 
-class Solution {
-    // Function to find the leaders in the array.
-    static ArrayList<Integer> leaders(int arr[], int n) {
-        ArrayList<Integer> result = new ArrayList<>();
-        int maxRight = arr[n - 1]; // Initialize the rightmost element as leader
 
-        // Traverse the array from right to left
-        for (int i = n - 1; i >= 0; i--) {
-            if (arr[i] >= maxRight) {
-                maxRight = arr[i]; // Update the maximum if the current element is larger
-                result.add(maxRight); // Add the leader to the result
+class Solution{
+    //Function to find the leaders in the array.
+    static ArrayList<Integer> leaders(int arr[], int n){
+        // Your code here
+        ArrayList<Integer> al=new ArrayList<Integer>();
+        int max=arr[n-1];
+        al.add(arr[n-1]);
+        for(int i=n-2;i>=0;i--){
+            if(arr[i]>=max){
+                max=arr[i];
+                al.add(max);
             }
         }
-
-        // Reverse the result array to get the leaders in the correct order
-        int size = result.size();
-        for (int i = 0; i < size / 2; i++) {
-            int temp = result.get(i);
-            result.set(i, result.get(size - i - 1));
-            result.set(size - i - 1, temp);
-        }
-
-        return result;
+        Collections.reverse(al);
+        return al;
     }
 }
-
