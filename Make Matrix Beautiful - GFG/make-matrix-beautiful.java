@@ -69,26 +69,26 @@ class GFG {
 class Solution {
     public static int findMinOperation(int N, int[][] matrix) {
         // code here
-        int maxi = Integer.MIN_VALUE;
-        int res = 0;
-        for (int i = 0; i < N; i++) {
-            int rows = 0, cols = 0;
-            for (int j = 0; j < N; j++) {
-                rows+= matrix[i][j];
-                cols+= matrix[j][i];
+        // yoyo bantai i found sum of any row or col of Beautiful Matrix are same yo yo!! 😀🏁
+        int maximum = Integer.MIN_VALUE;
+        int result = 0;
+        for(int i=0;i<matrix.length;i++){
+            int rows=0,cols=0;
+            for(int j=0;j<matrix[0].length;j++){
+                rows += matrix[i][j];
+                cols += matrix[j][i];
             }
-            maxi = Math.max(maxi, Math.max(rows, cols));
+            maximum = Math.max(maximum,Math.max(rows,cols));
         }
-        for (int i = 0; i < N; i++) {
-            int sum = calculateColSum(matrix, i);
-            res += maxi - sum;
+        for(int i = 0;i<matrix.length;i++){
+            result = result + maximum - rowSum(matrix,i);
         }
-        return res;
+        return result;
     }
-    private static int calculateColSum(int[][] matrix, int rowIndex) {
-        int sum = 0;
-        for (int j = 0; j < matrix.length; j++) {
-            sum += matrix[j][rowIndex];
+    private static int rowSum(int[][] matrix,int row){
+        int sum=0;
+        for(int i=0;i<matrix.length;i++){
+            sum +=matrix[row][i];
         }
         return sum;
     }
