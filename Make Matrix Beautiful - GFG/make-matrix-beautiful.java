@@ -69,7 +69,7 @@ class GFG {
 class Solution {
     public static int findMinOperation(int N, int[][] matrix) {
         // code here
-          int maxi = Integer.MIN_VALUE;
+        int maxi = Integer.MIN_VALUE;
         int res = 0;
         for (int i = 0; i < N; i++) {
             int rows = 0, cols = 0;
@@ -80,15 +80,15 @@ class Solution {
             maxi = Math.max(maxi, Math.max(rows, cols));
         }
         for (int i = 0; i < N; i++) {
-            int sum = calculateRowSum(matrix, i);
+            int sum = calculateColSum(matrix, i);
             res += maxi - sum;
         }
         return res;
     }
-    private static int calculateRowSum(int[][] matrix, int rowIndex) {
+    private static int calculateColSum(int[][] matrix, int rowIndex) {
         int sum = 0;
-        for (int j = 0; j < matrix[rowIndex].length; j++) {
-            sum += matrix[rowIndex][j];
+        for (int j = 0; j < matrix.length; j++) {
+            sum += matrix[j][rowIndex];
         }
         return sum;
     }
