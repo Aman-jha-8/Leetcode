@@ -97,7 +97,7 @@ class GfG
       Node temp = head;
       
       int i=1;
-      while(i < x-1){
+      while(i <= x-2){
           temp = temp.next;
           i++;
       }
