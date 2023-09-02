@@ -116,16 +116,13 @@ class Node {
 }
 */
 class Solution{
-     public ArrayList<Integer> costs = new ArrayList<>();
+    public ArrayList<Integer> costs = new ArrayList<>();
     public void leafs(Node node, int cost){
         cost++;
-        if(node==null){
+        if(node==null)
             return;
-        }
-        if(node.left==null && node.right==null){
+        if(node.left==null && node.right==null)
             costs.add(cost);
-            return;
-        }
         leafs(node.left,cost);
         leafs(node.right,cost);
         
