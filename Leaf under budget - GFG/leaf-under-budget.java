@@ -120,7 +120,6 @@ class Solution{
     public void leafs(Node node, int cost){
         cost++;
         if(node==null){
-            cost--;
             return;
         }
         if(node.left==null && node.right==null){
