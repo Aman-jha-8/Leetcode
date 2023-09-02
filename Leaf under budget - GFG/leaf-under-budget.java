@@ -123,10 +123,11 @@ class Solution{
             cost--;
             return;
         }
-        leafs(node.left,cost);
         if(node.left==null && node.right==null){
             costs.add(cost);
+            return;
         }
+        leafs(node.left,cost);
         leafs(node.right,cost);
         
     }
