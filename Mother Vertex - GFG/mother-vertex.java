@@ -30,11 +30,6 @@ class GFG
 }
 // } Driver Code Ends
 
-
-
-
-
-
 class Solution {
     public int findMotherVertex(int V, ArrayList<ArrayList<Integer>> adj) {
         boolean[] visited = new boolean[V];
