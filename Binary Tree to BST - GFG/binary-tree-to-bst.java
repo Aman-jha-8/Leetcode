@@ -116,33 +116,75 @@ class Node
 } */
 
 
-class Solution
-{
-    // The given root is the root of the Binary Tree
-    // Return the root of the generated BST
-     Node binaryTreeToBST(Node root)
-    {
-       // Your code here
-       if(root==null) return null;
-       ArrayList<Integer>list=new ArrayList<>();
-       inorder(root,list);
-       Collections.sort(list);
-       int[] idx={0};
-       inorderChange(root,list,idx);
-       return root;
+// class Solution
+// {
+//     // The given root is the root of the Binary Tree
+//     // Return the root of the generated BST
+//     private static int idx=0;
+//      Node binaryTreeToBST(Node root)
+//     {
+//       // Your code here
+//       if(root==null) return null;
+//       ArrayList<Integer>list=new ArrayList<>();
+//       inorder(root,list);
+//       Collections.sort(list);
+       
+//       inorderChange(root,list);
+//       return root;
+//     }
+//     public void inorder(Node root,ArrayList<Integer>list){
+//         if(root==null) return;
+//         inorder(root.left,list);
+//         list.add(root.data);
+//         inorder(root.right,list);
+//     }
+//     public void inorderChange(Node root,ArrayList<Integer>list){
+//         if(root==null) return;
+//         inorderChange(root.left,list);
+//         root.data = list.get(idx);
+//         idx++;
+//         inorderChange(root.right,list);
+//     }
+// }
+ 
+ 
+ class Solution {
+    private static int idx = 0;
+
+    Node binaryTreeToBST(Node root) {
+        if (root == null)
+            return null;
+
+        // Step 1: In-order traversal to collect values
+        ArrayList<Integer> list = new ArrayList<>();
+        inorder(root, list);
+
+        // Step 2: Sort the list
+        Collections.sort(list);
+
+        // Step 3: Build a new BST using the sorted values
+        idx = 0; // Reset the index
+        return buildBST(root, list);
     }
-    public void inorder(Node root,ArrayList<Integer>list){
-        if(root==null) return;
-        inorder(root.left,list);
+
+    private void inorder(Node root, ArrayList<Integer> list) {
+        if (root == null)
+            return;
+        inorder(root.left, list);
         list.add(root.data);
-        inorder(root.right,list);
+        inorder(root.right, list);
     }
-    public void inorderChange(Node root,ArrayList<Integer>list,int[] idx){
-        if(root==null) return;
-        inorderChange(root.left,list,idx);
-        root.data = list.get(idx[0]);
-        idx[0]++;
-        inorderChange(root.right,list,idx);
+
+    private Node buildBST(Node root, ArrayList<Integer> list) {
+        if (root == null)
+            return null;
+
+        // Recursively build the left and right subtrees
+        root.left = buildBST(root.left, list);
+        root.data = list.get(idx);
+        idx++;
+        root.right = buildBST(root.right, list);
+
+        return root;
     }
 }
- 
