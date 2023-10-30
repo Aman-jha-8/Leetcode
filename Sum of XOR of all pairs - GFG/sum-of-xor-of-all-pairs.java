@@ -65,7 +65,7 @@ class Solution{
 
             for (int j = 0; j < n; j++) {
 
-                if (arr[j] % 2 == 0) {
+                if ((arr[j] & 1) == 0) {
                     zero_cnt++;
                 } else {
                     one_cnt++;
